@@ -1,0 +1,18 @@
+
+services:
+  browsercontrol:
+    build: .
+    environment:
+      - MCP_DEV_MODE=true
+      - TZ=Europe/Istanbul
+      - CHROME_CLI=--remote-debugging-port=9222
+      - CDP_ENDPOINT=http://127.0.0.1:9222
+    #   - CDP_ENDPOINT=http://host.docker.internal:9222 # local browser access
+    ports:
+      - "127.0.0.1:3000:3000" # HTTP Chromium desktop gui
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ./mcp:/.app
+      - /.app/node_modules
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
