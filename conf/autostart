@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -x
+
+CURDIR=$(pwd)
+echo "Starting MCP server..."
+
+cd /.app
+#print the current user
+echo "Current user: $(whoami)" >> /.app/mcp.log
+
+# check if dev mode is enabled
+if [ "$MCP_DEV_MODE" ]; then
+  echo "Dev mode is enabled" >> /.app/mcp.log
+  npm run dev >> /.app/mcp.log 2>&1 &
+else
+  npm run start >> /.app/mcp.log 2>&1 &
+fi
+cd $CURDIR
+
+echo "Starting Browser..."
+wrapped-chromium ${CHROME_CLI}
