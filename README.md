@@ -109,5 +109,5 @@ This file allows you to define and manage connections to MCP servers.
 
 ## References
 
-- [Playwright MCP](https://github.com/microsoft/playwright-mcp))
+- [Playwright MCP](https://github.com/microsoft/playwright-mcp)
 - [LinuxServer.io Chromium](https://docs.linuxserver.io/images/docker-chromium/)
